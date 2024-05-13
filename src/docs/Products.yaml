@@ -1,0 +1,111 @@
+paths:
+  /products/:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Products
+      responses:
+        '200':
+          description: "Respuesta exitosa"
+          content:
+            application/json:
+              schema:
+                $ref: 'src/models/products.model.js'
+        '500':
+          description: "Error interno del servidor"
+    post:
+      summary: Crea un nuevo producto
+      tags:
+        - Products
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Título del producto
+                description:
+                  type: string
+                  description: Descripción del producto
+                price:
+                  type: number
+                  description: Precio del producto
+                brand:
+                  type: string
+                  description: Categoría del producto
+              required:
+                - title
+                - price
+                - brand
+      responses:
+        "201":
+          description: "Producto creado correctamente"
+        "400":
+          description: "Campos incompletos, son requeridos: title, price, brand!!! "
+        "500":
+          description: "Error interno del servidor"
+
+  /products/{id}:
+    delete:
+      summary: Elimina un producto por ID
+      tags:
+        - Products
+      security:
+      - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del producto a eliminar
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Producto eliminado correctamente
+        '404':
+          description: No existe un producto con ese ID
+        '500':
+          description: Error interno del servidor
+    put:
+      summary: Actualizar un producto existente
+      description: Actualiza los datos de un producto existente en base al ID proporcionado.
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del producto que se va a actualizar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Nuevo nombre del producto (opcional)
+                price:
+                  type: number
+                  description: Nuevo precio del producto (opcional)
+                description:
+                  type: string
+                  description: Nueva descripción del producto (opcional)
+                brand:
+                  type: string
+                  description: Nueva marca del producto (opcional)
+      responses:
+        '200':
+          description: Product updated successfully
+        '404':
+          description: Product not found
+        '500':
+          description: Internal server error
