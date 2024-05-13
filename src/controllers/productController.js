@@ -4,7 +4,7 @@ module.exports = {
   getAllProducts: async (req, res) => {
     try {
       const products = await Product.find();
-      res.json(products);
+      res.status(200).json(products);
     } catch (error) {
       console.error('Error fetching products:', error);
       res.status(500).send('Server error');
@@ -37,7 +37,7 @@ module.exports = {
       }
       
       await Product.findByIdAndUpdate(productId, req.body);
-      res.status(200).send('Product updated');
+      res.status(200).send({ message: 'Product updated'});
     } catch (error) {
       console.error('Error updating product:', error);
       res.status(500).send('Server error');
