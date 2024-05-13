@@ -28,13 +28,36 @@ module.exports = {
       res.status(500).send('Server error');
     }
   },
-  
+
   updateProduct: async (req, res) => {
     try {
-      await Product.findByIdAndUpdate(req.params.id, req.body);
+      const productId = await Product.findOne( {_id: req.params.id} );
+      if (!productId) {
+        return res.status(404).send('Product not found');
+      }
+      
+      await Product.findByIdAndUpdate(productId, req.body);
       res.status(200).send('Product updated');
     } catch (error) {
       console.error('Error updating product:', error);
+      res.status(500).send('Server error');
+    }
+  },
+
+  deleteProduct: async (req, res) => {
+    try {
+      const productId = req.params.id;
+
+      const result = await Product.deleteOne({ _id: productId });
+
+      if (result.deletedCount === 0) {
+        console.log("Product not found");
+        return res.status(404).send('Product not found');
+      }
+
+      res.status(200).send('Product deleted');
+    } catch (error) {
+      console.error('Error deleting product:', error);
       res.status(500).send('Server error');
     }
   }
