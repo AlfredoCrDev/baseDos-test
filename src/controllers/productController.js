@@ -10,6 +10,7 @@ module.exports = {
       res.status(500).send('Server error');
     }
   },
+
   addProduct: async (req, res) => {
     const { title, description, price, brand } = req.body;
 
@@ -27,4 +28,14 @@ module.exports = {
       res.status(500).send('Server error');
     }
   },
+  
+  updateProduct: async (req, res) => {
+    try {
+      await Product.findByIdAndUpdate(req.params.id, req.body);
+      res.status(200).send('Product updated');
+    } catch (error) {
+      console.error('Error updating product:', error);
+      res.status(500).send('Server error');
+    }
+  }
 };
