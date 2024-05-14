@@ -2,6 +2,7 @@ paths:
   /products/:
     get:
       summary: Obtiene todos los productos
+      description: Obtiene una lista de todos los productos existentes.
       tags:
         - Products
       responses:
@@ -15,6 +16,7 @@ paths:
           description: "Error interno del servidor"
     post:
       summary: Crea un nuevo producto
+      description: Crea un nuevo producto en base a los datos porporcionados.
       tags:
         - Products
       security:
@@ -53,6 +55,7 @@ paths:
   /products/{id}:
     delete:
       summary: Elimina un producto por ID
+      description: Elimina un producto existente en base al ID proporcionado.
       tags:
         - Products
       security:
