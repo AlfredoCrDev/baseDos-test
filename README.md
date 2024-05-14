@@ -9,6 +9,7 @@
   - connect-mongo  
 - Swagger-jsdoc
 - Swagger-ui-express
+- Cors
 
 ### ☑️ devDependencias:
 
