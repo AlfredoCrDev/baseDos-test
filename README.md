@@ -63,6 +63,7 @@ Para revisar la documentación de la API en Swagger UI:
 - 📥 POST `/products`: Agrega un nuevo producto.
 - 🔃 PUT `/:id` Actualiza un producto existente por su ID.
 - ❌ DELETE `/product/:id`: Elimina un producto indicandole su ID.
+- ⚠️ GET `/products/:id`: Obtiene un producto especifico por ID.
 
 
 ### ⚙️ Funciones & Características:
@@ -80,10 +81,10 @@ Para revisar la documentación de la API en Swagger UI:
   }
   ** title, price y brand son obligatorio **
 ```
-- **getAllProducts:** Permite visualizar con el método GET de http, los productos agregados previamente.  
+- ⚠️ **getAllProducts:** Permite visualizar con el método GET de http, los productos agregados previamente.  
 - 🔁 **updateProduct:** Actualiza un producto que ya este agregado previamente, recibe como parametro el ID del mismo. 
-
-- ❌ **deleteProduct:** También, recibiendo un ID como parametro, se elimina un producto. 
+- ❌ **deleteProduct:** También, recibiendo un ID como parametro, se elimina un producto.
+- ⚠️ **getProductById** Recibiendo un ID como parametro muestra un producto en especifico.
 
 ## 🔐 Licencia
 

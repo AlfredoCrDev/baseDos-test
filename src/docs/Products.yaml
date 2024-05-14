@@ -112,3 +112,22 @@ paths:
           description: Product not found
         '500':
           description: Internal server error
+    get:
+      summary: Obtener un producto por ID
+      description: Obtiene un producto existente en base al ID proporcionado.
+      tags:
+      - Products
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del producto que se va a obtener
+      responses:
+        '200':
+          description: Product found
+        '404':
+          description: Product not found
+        '500':
+          description: Server error

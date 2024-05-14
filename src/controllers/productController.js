@@ -60,5 +60,19 @@ module.exports = {
       console.error('Error deleting product:', error);
       res.status(500).send('Server error');
     }
+  },
+
+  getProductById: async (req, res) => {
+    try {
+      const productId = req.params.id;
+      const product = await Product.findById(productId);
+      if (!product) {
+        return res.status(404).send('Product not found');
+        }
+      res.status(200).json({ message: 'Product found', data: product });
+    } catch (error) {
+      console.error('Error getting product:', error);
+      res.status(500).send('Server error');
+    }
   }
 };
