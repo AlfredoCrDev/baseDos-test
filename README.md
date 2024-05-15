@@ -38,6 +38,7 @@ Para ejecutar la aplicación utiliza:
 ```shell
 npm run dev 
 ```
+En vista que el proyecto es privado subo el archivo .env
 ### ▶️ Test
 Para ejecutar la pruebas utiliza:
 ```shell
