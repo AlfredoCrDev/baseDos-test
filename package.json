@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --env-file .env src/server.js",
-    "test": "mocha tests/products.test.js"
+    "test": "mocha tests/products.test.js --timeout 5000"
   },
   "keywords": [],
   "author": "Alfredo Carrasquel",

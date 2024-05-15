@@ -3,7 +3,11 @@ const Product = require('../models/products.model');
 module.exports = {
   getAllProducts: async (req, res) => {
     try {
-      const products = await Product.find();
+
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+
+      const products = await Product.paginate({}, {page, limit});
       res.status(200).json(products);
     } catch (error) {
       console.error('Error fetching products:', error);

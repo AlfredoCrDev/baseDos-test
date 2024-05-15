@@ -8,9 +8,9 @@ describe('Router de Productos', () => {
   it('Debería obtener la lista de productos', async () => {
     const response = await request.get('/products/')
     expect(response.status).to.equal(200);
-    expect(response.body).to.be.an('array');
-    expect(response.body).to.have.length.above(0);
-    expect(response.body[0]).to.have.property('price');
+    expect(response._body.docs).to.be.an('array');
+    expect(response._body.docs).to.have.length.above(0);
+    expect(response._body.docs[0]).to.have.property('price');
   });
 
   it('Debería dar error por faltar propiedades obligatorias y devolver un código 400', async () => {

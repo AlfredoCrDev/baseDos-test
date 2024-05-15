@@ -5,6 +5,19 @@ paths:
       description: Obtiene una lista de todos los productos existentes.
       tags:
         - Products
+      parameters:
+        - in: query
+          name: page
+          description: Página de la lista de productos
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: limit
+          description: Cantidad de productos por página
+          schema:
+            type: integer
+            default: 10
       responses:
         '200':
           description: "Respuesta exitosa"
